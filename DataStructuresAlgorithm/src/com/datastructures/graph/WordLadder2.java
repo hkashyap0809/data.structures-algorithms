@@ -9,9 +9,6 @@ import java.util.Queue;
 public class WordLadder2 {
 	
 	
-	public List<List<String>> findLadders(String beginWord, String endWord, List<String> wordList){
-		
-	}
 	public List<List<String>> findLaddersBrute(String beginWord, String endWord, List<String> wordList) {
 
 		Queue<ArrayList<String>> queue = new LinkedList<ArrayList<String>>();

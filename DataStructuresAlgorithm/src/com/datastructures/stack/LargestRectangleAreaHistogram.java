@@ -5,8 +5,8 @@ import java.util.Stack;
 public class LargestRectangleAreaHistogram {
 	
 	//Brute Force
-	public static int largestRectangleArea(int[] heights) {
-	
+	public static int largestRectangleAreaBrute(int[] heights) {
+		return 0;
 	}
 	
 	

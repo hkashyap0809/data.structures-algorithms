@@ -18,7 +18,7 @@ public class MinCostToCutStick {
 		return minCost;
 	}
 
-	public int minCost(int n, int[] cuts) {
+	public int minCostRec(int n, int[] cuts) {
 
 		Arrays.sort(cuts);
 		int[] newCuts = new int[cuts.length+2];
@@ -50,7 +50,7 @@ public class MinCostToCutStick {
 		return minCost;
 	}
 
-	public int minCost(int n, int[] cuts) {
+	public int minCostMem(int n, int[] cuts) {
 
 		Arrays.sort(cuts);
 		int[] newCuts = new int[cuts.length+2];

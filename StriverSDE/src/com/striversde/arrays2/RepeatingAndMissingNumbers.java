@@ -35,17 +35,7 @@ public class RepeatingAndMissingNumbers {
 			k++;
 		}
 
-		int diffBit = 0;
-		for( int i=0; i<32;i++) {
-			int res = (inputXOR & (1<<i));
-			// System.out.println(res);
-			if ( res != 0 ) {
-				diffBit = i;
-				break;
-			}
-		}
-
-		diffBit = (inputXOR & ~(inputXOR-1));
+		int diffBit = (inputXOR & ~(inputXOR-1));
 
 		int zeroBit = 0;
 		int oneBit = 0;
@@ -65,7 +55,7 @@ public class RepeatingAndMissingNumbers {
 				oneBit = oneBit^i;
 			}
 		}
-
+		
 
 		int count = 0;
 		for( Integer num : arr ) {

@@ -1,14 +1,12 @@
-//package com.cses.dynamicprogramming;
+package com.cses.sortingandsearching;
 
-import java.util.Arrays;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashMap;
 import java.util.StringTokenizer;
 
-
-
-public class MinimizingCoins {
+public class Apartments {
 	
 	static class FastReader{
 		BufferedReader br;
@@ -64,38 +62,33 @@ public class MinimizingCoins {
 		}
 	}
 	
-	
-	public static void main(String args[]) {
+	public static void main(String[] args) {
 		FastReader fr = new FastReader();
 		int n = fr.nextInt();
-		int k = fr.nextInt();
-		int[] coins = new int[n];
-		for( int i=0; i<n; i++) {
-			coins[i] = fr.nextInt();
+		int m = fr.nextInt();
+		long k = fr.nextLong();
+		HashMap<Long,Long> hashMap = new HashMap<>();
+		for( int i = 0; i<n; i++) {
+			long req = fr.nextLong();
+			hashMap.put(req+k, hashMap.getOrDefault(req+k, 0L)+1);
+			hashMap.put(req-k, hashMap.getOrDefault(req-k, 0L)+1);
 		}
-		
-		int[][] dp = new int[n][k+1];
-		
-		for( int target = 0; target<=k; target++) {
-			if ( target % coins[0] == 0 ) {
-				dp[0][target] = target / coins[0];
-			}else {
-				dp[0][target] = 10000000;
-			}
+		int count = 0;
+		for( int i =0; i<m; i++) {
+			long apt = fr.nextLong();
 			
-		}
-		
-		for( int idx = 1; idx < n; idx++ ) {
-			for( int target = 0; target <= k; target ++) {
-				int notTake = dp[idx-1][target];
-				int take = 10000000;
-				if( coins[idx] <= target ) {
-					take = 1 + dp[idx][target-coins[idx]];
-					dp[idx][target] =  Math.min(take, notTake);
-				}
+			hashMap.put(apt+k, hashMap.getOrDefault(apt+k, 0L)+1);
+			hashMap.put(apt-k, hashMap.getOrDefault(apt-k, 0L)+1);
+			
+			if( hashMap.containsKey(apt)) {
+				hashMap.put(apt, hashMap.get(apt)-1);
+				count++;
+				if( hashMap.get(apt) == 0 )	hashMap.remove(apt);
+				
 			}
 		}
-		if( dp[n-1][k]== 10000000)	dp[n-1][k]=-1;
-		System.out.println(dp[n-1][k]);
+		System.out.println(count);
+		
 	}
+
 }

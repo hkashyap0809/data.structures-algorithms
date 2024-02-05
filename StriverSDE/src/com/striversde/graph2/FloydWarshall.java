@@ -1,7 +1,7 @@
 package com.striversde.graph2;
 
 public class FloydWarshall {
-	public void shortest_distance(int[][] matrix){
+	public static void shortest_distance(int[][] matrix){
 		int n = matrix.length;
 
 
@@ -29,6 +29,17 @@ public class FloydWarshall {
 				}
 			}
 		}
-
+	}
+	
+	public static void main(String[] args) {
+		int[][] mat = { { 0, 5, 9, 100 }, { 100, 0, 2, 8 }, { 100, 100, 0, 7 }, { 4, 100, 100, 0 } };
+		 shortest_distance(mat);
+		
+		for( int[] row : mat ) {
+			for( int val : row ) {
+				System.out.print(val+" ");
+			}
+			System.out.println();
+		}
 	}
 }
